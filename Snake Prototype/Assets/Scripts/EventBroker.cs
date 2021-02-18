@@ -9,6 +9,8 @@ public static class EventBroker
 
     public static event Action GameOverHandler;
 
+    public static event Action<ICommand> SnakeMoveHandler;
+
     public static void CallPlayerMove(ICommand command)
     {
         PlayerMoveHandler?.Invoke(command);
@@ -18,5 +20,10 @@ public static class EventBroker
     {
         Debug.Log("GameOver");
         GameOverHandler?.Invoke();
+    }
+
+    public static void CallSnakeMove(ICommand command)
+    {
+        SnakeMoveHandler?.Invoke(command);
     }
 }

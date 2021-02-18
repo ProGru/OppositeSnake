@@ -9,6 +9,7 @@ public class SnakeController : MonoBehaviour
     public GameObject player;
     public int stepAtOnce = 2;
     GridMap gridMap;
+    ICommand command;
 
     [Inject]
     public void GridMapConstruct(GridMap _gridMap)
@@ -27,11 +28,19 @@ public class SnakeController : MonoBehaviour
         List<Node> path = pathFinder.FindPath(this.transform.position, player.transform.position);
         if (path.Count > stepAtOnce-1)
         {
-            this.transform.position = path[stepAtOnce-1].wordlPosition;
+
+            command = new SnakeMoveCommand(path[stepAtOnce - 1].wordlPosition, gameObject);
+            command.Execute();
+            EventBroker.CallSnakeMove(command);
         }
         else
         {
-            this.transform.position = path[path.Count-1].wordlPosition;
+            command = new SnakeMoveCommand(path[path.Count - 1].wordlPosition, gameObject);
+            command.Execute();
+            EventBroker.CallSnakeMove(command);
+        }
+        if (transform.position == player.transform.position)
+        {
             EventBroker.CallGameOver();
         }
     }
