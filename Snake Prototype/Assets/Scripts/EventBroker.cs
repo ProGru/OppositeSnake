@@ -5,6 +5,9 @@ using System;
 
 public static class EventBroker
 {
+
+    public static Action OnSceneLoadComplete;
+
     public static event Action<ICommand> PlayerMoveHandler;
 
     public static event Action GameOverHandler;
@@ -26,4 +29,10 @@ public static class EventBroker
     {
         SnakeMoveHandler?.Invoke(command);
     }
+
+    public static void CallOnSceneLoadComplete()
+    {
+        OnSceneLoadComplete?.Invoke();
+    }
+
 }
