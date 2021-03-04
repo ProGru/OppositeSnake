@@ -19,15 +19,14 @@ public class AStartPathFinder : IPathFinder
         Node startNode = gridMap.GetNode(startPos);
         Node endNode = gridMap.GetNode(targetPos);
 
-        List<Node> openSet = new List<Node>();
+        Heap<Node> openSet = new Heap<Node>(gridMap.MapSizeX*gridMap.MapSizeZ);
         HashSet<Node> closedSet = new HashSet<Node>();
         openSet.Add(startNode);
 
         while (openSet.Count > 0)
         {
-            Node currentNode = FindTheLowestCostNode(openSet);
+            Node currentNode = openSet.RemoveFirst();
 
-            openSet.Remove(currentNode);
             closedSet.Add(currentNode);
 
             if (currentNode == endNode)
@@ -78,7 +77,6 @@ public class AStartPathFinder : IPathFinder
                 countEquals++;
             }
         }
-        Debug.Log(countEquals);
         return currentNode;
     }
 

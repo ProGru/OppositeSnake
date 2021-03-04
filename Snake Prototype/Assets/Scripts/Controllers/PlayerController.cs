@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Zenject;
+using UnityEngine.InputSystem;
+
+public class PlayerController : MonoBehaviour
+{
+    GridMap gridMap;
+    ICommand command;
+
+    [Inject]
+    public void GridMapConstruct(GridMap _gridMap)
+    {
+        gridMap = _gridMap;
+    }
+
+    public void UPMovement(InputAction.CallbackContext value)
+    {
+        if (value.started)
+            PlayerStep(Vector3.forward);
+    }
+
+    public void DOWNMovement(InputAction.CallbackContext value)
+    {
+        if (value.started)
+            PlayerStep(Vector3.back);
+    }
+
+    public void LEFTMovement(InputAction.CallbackContext value)
+    {
+        if (value.started)
+            PlayerStep(Vector3.left);
+    }
+
+    public void RIGHTMovement(InputAction.CallbackContext value)
+    {
+        if (value.started)
+            PlayerStep(Vector3.right);
+    }
+
+    private void PlayerStep(Vector3 step)
+    {
+        if (gridMap.IsWalkable(transform.position + step))
+        {
+            command = new MoveCommand(step, gameObject);
+            command.Execute();
+            EventBroker.CallPlayerMove(command);
+        }
+    }
+}
