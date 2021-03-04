@@ -140,9 +140,9 @@ public class GridMap
         List<Node> neightbours = new List<Node>();
         for (int i = -1; i < 2; i++)
         {
-            for (int j = -1; j <2; j++)
+            for (int j = -1; j < 2; j++)
             {
-                if (i==0 && j == 0)
+                if (i == 0 && j == 0)
                 {
                     continue;
                 }
@@ -151,7 +151,7 @@ public class GridMap
 
                     int x = (int)node.gridPos.x + i;
                     int z = (int)node.gridPos.y + j;
-                    Node selected = GetNode(x,z);
+                    Node selected = GetNode(x, z);
                     if (selected != null)
                     {
                         neightbours.Add(selected);
@@ -160,6 +160,7 @@ public class GridMap
 
             }
         }
+
         return neightbours;
     }
 
