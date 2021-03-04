@@ -25,6 +25,12 @@ public class SnakeController : MonoBehaviour
 
     public void MakeSnakeMove(ICommand command)
     {
+        //check before move
+        if (transform.position == player.transform.position)
+        {
+            EventBroker.CallGameOver();
+        }
+
         List<Node> path = pathFinder.FindPath(this.transform.position, player.transform.position);
         if (path.Count > stepAtOnce-1)
         {
@@ -39,6 +45,38 @@ public class SnakeController : MonoBehaviour
             command.Execute();
             EventBroker.CallSnakeMove(command);
         }
+        //check after move
+        if (transform.position == player.transform.position)
+        {
+            EventBroker.CallGameOver();
+        }
+    }
+
+    [ContextMenu("MakeSnakeMove")]
+    public void MakeSnakeMove()
+    {
+        ICommand command;
+        //check before move
+        if (transform.position == player.transform.position)
+        {
+            EventBroker.CallGameOver();
+        }
+
+        List<Node> path = pathFinder.FindPath(this.transform.position, player.transform.position);
+        if (path.Count > stepAtOnce - 1)
+        {
+
+            command = new SnakeMoveCommand(path[stepAtOnce - 1].wordlPosition, gameObject);
+            command.Execute();
+            EventBroker.CallSnakeMove(command);
+        }
+        else
+        {
+            command = new SnakeMoveCommand(path[path.Count - 1].wordlPosition, gameObject);
+            command.Execute();
+            EventBroker.CallSnakeMove(command);
+        }
+        //check after move
         if (transform.position == player.transform.position)
         {
             EventBroker.CallGameOver();

@@ -117,7 +117,7 @@ MonoBehaviour:
   m_MinSize: {x: 941, y: 492}
   m_MaxSize: {x: 28006, y: 14042}
   vertical: 0
-  controlID: 83
+  controlID: 63
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 35
+  controlID: 82
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -327,8 +327,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -540.5
     m_HBaseRangeMax: 540.5
-    m_VBaseRangeMin: -314.5
-    m_VBaseRangeMax: 314.5
+    m_VBaseRangeMin: -325
+    m_VBaseRangeMax: 325
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -345,11 +345,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 1081
-      height: 629
+      height: 650
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 540.5, y: 314.5}
+    m_Translation: {x: 540.5, y: 325}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -357,9 +357,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -540.5
-      y: -314.5
+      y: -325
       width: 1081
-      height: 629
+      height: 650
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1081, y: 650}
@@ -397,16 +397,16 @@ MonoBehaviour:
   m_ShowContextualTools: 0
   m_WindowGUID: 02f1ed7e604f5f04ca9a5d9029a56414
   m_Gizmos: 0
-  m_SceneIsLit: 0
+  m_SceneIsLit: 1
   m_SceneLighting: 1
-  m_2DMode: 1
+  m_2DMode: 0
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 570.0204, y: 289.29843, z: -29.141123}
+    m_Target: {x: 10.996334, y: -2.752945, z: 9.770116}
     speed: 2
-    m_Value: {x: 570.0204, y: 289.29843, z: -29.141123}
+    m_Value: {x: 10.996334, y: -2.752945, z: 9.770116}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
-    showSkybox: 0
+    showSkybox: 1
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -452,17 +452,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: -0.65796524, y: -0.030022651, z: 0.026268736, w: -0.7519917}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: -0.65796524, y: -0.030022653, z: 0.026268736, w: -0.7519917}
   m_Size:
-    m_Target: 392.2014
+    m_Target: 12.683552
     speed: 2
-    m_Value: 392.2014
+    m_Value: 12.683552
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1.0005
     m_SpeedNormalized: 0.5
@@ -522,11 +522,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/animations
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/animations
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\adamo\Desktop\Unity Prototypes AJ\OppositeSnake\Snake
     Prototype
@@ -534,9 +534,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 9}
-    m_SelectedIDs: f4370000
-    m_LastClickedID: 14324
-    m_ExpandedIDs: 00000000ee370000fe37000000ca9a3b
+    m_SelectedIDs: fc360000
+    m_LastClickedID: 14076
+    m_ExpandedIDs: 00000000fc36000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -564,7 +564,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ee370000
+    m_ExpandedIDs: 00000000fc360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -697,9 +697,9 @@ MonoBehaviour:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fa370000
-    m_LastClickedID: 14330
-    m_ExpandedIDs: 00000000ee37000000ca9a3b
+    m_SelectedIDs: 06370000
+    m_LastClickedID: 14086
+    m_ExpandedIDs: 00000000fc36000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -727,7 +727,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ee370000
+    m_ExpandedIDs: 00000000fc360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -814,7 +814,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: f0f8ffff86380000263900003239000034390000
+      m_ExpandedIDs: 6afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
