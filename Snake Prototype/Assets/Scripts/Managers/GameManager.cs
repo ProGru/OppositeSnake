@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     List<GameObject> _instanceOfManagers;
     private ILevelLoader levelLoader;
 
-    public string defaultSceneName;
+    public Level defaultScene;
 
     private void Start()
     {

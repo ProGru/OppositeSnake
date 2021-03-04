@@ -1,0 +1,52 @@
+{
+    "name": "UIActions",
+    "maps": [
+        {
+            "name": "UIController",
+            "id": "9f31a002-f84f-42c8-b3ed-153979ecbde4",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "b61cdb44-b868-4254-98b1-5a3c1f440217",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Exit",
+                    "type": "Button",
+                    "id": "463480d1-8dc5-415f-8aa1-1d110b4dcc73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0838e429-a8a2-4e3f-a838-2ae1c712699f",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b5933aa-d6cd-4ba8-b905-fcb1cfd6a24e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

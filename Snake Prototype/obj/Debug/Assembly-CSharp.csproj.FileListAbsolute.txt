@@ -270,3 +270,7 @@ C:\Users\adamo\Desktop\Unity Prototypes AJ\Snake Prototype\obj\Debug\Assembly-CS
 C:\Users\adamo\Desktop\Unity Prototypes AJ\Snake Prototype\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\adamo\Desktop\Unity Prototypes AJ\Snake Prototype\obj\Debug\Assembly-CSharp.dll
 C:\Users\adamo\Desktop\Unity Prototypes AJ\Snake Prototype\obj\Debug\Assembly-CSharp.pdb
+C:\Users\adamo\Desktop\Unity Prototypes AJ\OppositeSnake\Snake Prototype\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+C:\Users\adamo\Desktop\Unity Prototypes AJ\OppositeSnake\Snake Prototype\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+C:\Users\adamo\Desktop\Unity Prototypes AJ\OppositeSnake\Snake Prototype\obj\Debug\Assembly-CSharp.dll
+C:\Users\adamo\Desktop\Unity Prototypes AJ\OppositeSnake\Snake Prototype\obj\Debug\Assembly-CSharp.pdb

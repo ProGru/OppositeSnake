@@ -7,6 +7,7 @@ public static class EventBroker
 {
 
     public static Action OnSceneLoadComplete;
+    public static Action OnSceneLoadStart;
 
     public static event Action<ICommand> PlayerMoveHandler;
 
@@ -33,6 +34,11 @@ public static class EventBroker
     public static void CallOnSceneLoadComplete()
     {
         OnSceneLoadComplete?.Invoke();
+    }
+
+    public static void CallOnSceneLoadStart()
+    {
+        OnSceneLoadStart?.Invoke();
     }
 
 }

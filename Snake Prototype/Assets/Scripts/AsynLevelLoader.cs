@@ -21,11 +21,15 @@ public class AsynLevelLoader : ILevelLoader
 
     void OnUnloadOperationComplete(AsyncOperation ao)
     {
-        Debug.Log("Scene unloaded.");
     }
 
     public void LoadScene(string sceneName)
     {
+        if (currentSceneName != null)
+        {
+            EventBroker.CallOnSceneLoadStart();
+            UnloadScene(currentSceneName);
+        }
         AsyncOperation ao = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         if (ao == null)
         {

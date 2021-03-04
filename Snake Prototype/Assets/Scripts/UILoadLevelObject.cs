@@ -7,22 +7,22 @@ public class UILoadLevelObject : MonoBehaviour
 {
     public TextMeshProUGUI levelNameText;
 
-    private string _levelName;
-    public string LevelName
+    private Level _levelSettings;
+    public Level LevelSettings
     {
         get
         {
-            return _levelName;
+            return _levelSettings;
         }
         set
         {
-            _levelName = value;
-            levelNameText.text = value;
+            _levelSettings = value;
+            levelNameText.text = value.levelName;
         }
     }
 
     public void LoadLevel()
     {
-        GameManager.Instance.LoadScene(LevelName);
+        LevelSettings.Load();
     }
 }

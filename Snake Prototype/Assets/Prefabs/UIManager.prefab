@@ -1993,7 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - SampleScene
+  - {fileID: 11400000, guid: 73d7ee2fe5b1704488048d4b79092cc9, type: 2}
   levelPrefab: {fileID: 3576678448476625272, guid: 5177ad52675772942be7d4eb11a9b0c0,
     type: 3}
   parentPanel: {fileID: 4135481718646720767}
@@ -2111,6 +2111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7374026898271928694}
   - component: {fileID: 1517054335}
+  - component: {fileID: 749961686650134525}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -2156,6 +2157,67 @@ MonoBehaviour:
   menuCanvas: {fileID: 8748576544665843483}
   optionCanvas: {fileID: 145691708948347636}
   levelSelectCanvas: {fileID: 5965312313974781938}
+--- !u!114 &749961686650134525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460352174113475542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 130663555c934a242bda87b0cbad782a,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1517054335}
+        m_MethodName: PButtonAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b61cdb44-b868-4254-98b1-5a3c1f440217
+    m_ActionName: UIController/Start[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1517054335}
+        m_MethodName: EscapeAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 463480d1-8dc5-415f-8aa1-1d110b4dcc73
+    m_ActionName: UIController/Exit[/Keyboard/escape]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: UIController
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &5779905816904662370
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,7 +3633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8138648405057126851}
   - component: {fileID: 8531059168140084629}
-  - component: {fileID: 5190512696439964631}
+  - component: {fileID: 4055106450760743201}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -3636,7 +3698,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5190512696439964631
+--- !u!81 &4055106450760743201
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

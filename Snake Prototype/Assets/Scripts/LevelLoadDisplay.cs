@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LevelLoadDisplay : MonoBehaviour
 {
-    public List<string> Levels;
+    public List<Level> Levels;
     
     public GameObject levelPrefab;
     public GameObject parentPanel;
@@ -22,10 +22,10 @@ public class LevelLoadDisplay : MonoBehaviour
         {
             LevelInstantions = new List<GameObject>();
         }
-        foreach(string lvl in Levels)
+        foreach(Level lvl in Levels)
         {
             GameObject levelInstance = Instantiate(levelPrefab, parentPanel.transform);
-            levelInstance.GetComponent<UILoadLevelObject>().LevelName = lvl;
+            levelInstance.GetComponent<UILoadLevelObject>().LevelSettings = lvl;
             levelInstance.GetComponent<OnButtonClick>().buttonClick.AddListener(HideWindow);
             LevelInstantions.Add(levelInstance);
         }
