@@ -11,6 +11,8 @@ public class GameManager : Singleton<GameManager>
 
     public Level defaultScene;
 
+    private Level currentLevel;
+
     private void Start()
     {
         levelLoader = new AsynLevelLoader();
@@ -18,14 +20,20 @@ public class GameManager : Singleton<GameManager>
         LoadManagers();
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(Level level)
     {
-        levelLoader.LoadScene(sceneName);
+        currentLevel = level;
+        levelLoader.LoadScene(level.levelName);
     }
 
     public void UnloadScene(string sceneName)
     {
         levelLoader.UnloadScene(sceneName);
+    }
+
+    public void UnloadScene(Level level)
+    {
+        levelLoader.UnloadScene(level.levelName);
     }
 
     void LoadManagers()
@@ -52,8 +60,14 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene("BootScene");
     }
 
+    public void ReloadLevel()
+    {
+        LoadScene(currentLevel);
+    }
+
     public void Exit()
     {
         Application.Quit();
     }
+
 }

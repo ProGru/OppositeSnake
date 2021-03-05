@@ -13,11 +13,15 @@ public class UIManager : Singleton<UIManager>
     private GameObject _optionCanvas;
     private GameObject _menuCanvas;
     private GameObject _levelSelectCanvas;
+    private GameObject _winCanvas;
+    private GameObject _gameOverCanvas;
 
     public Canvas loadingCanvas;
     public Canvas menuCanvas;
     public Canvas optionCanvas;
     public Canvas levelSelectCanvas;
+    public Canvas WinCanvas;
+    public Canvas GameOverCanvas;
 
     private Canvas _activeCanvas;
 
@@ -48,8 +52,12 @@ public class UIManager : Singleton<UIManager>
         _uiCamera = uIcamera.gameObject;
         _menuCanvas = menuCanvas.gameObject;
         _levelSelectCanvas = levelSelectCanvas.gameObject;
+        _winCanvas = WinCanvas.gameObject;
+        _gameOverCanvas = GameOverCanvas.gameObject;
         EventBroker.OnSceneLoadStart += ShowCamera;
         EventBroker.OnSceneLoadComplete += HideCamera;
+        EventBroker.WinHandler += ShowWinCanvas;
+        EventBroker.GameOverHandler += ShowGameOver;
     }
 
     public void ShowLoadingCanvas(bool show, string text = null)
@@ -95,7 +103,8 @@ public class UIManager : Singleton<UIManager>
 
     public void RestartLevel()
     {
-        GameManager.Instance.Reload();
+        _activeCanvas?.gameObject.SetActive(false);
+        GameManager.Instance.ReloadLevel();
     }
 
     public void ShowMenu(bool show)
@@ -122,6 +131,20 @@ public class UIManager : Singleton<UIManager>
             _activeCanvas = levelSelectCanvas;
     }
 
+    public void ShowWinCanvas()
+    {
+        _activeCanvas?.gameObject.SetActive(false);
+        _winCanvas.SetActive(true);
+        _activeCanvas = WinCanvas;
+    }
+
+    public void ShowGameOver()
+    {
+        _activeCanvas?.gameObject.SetActive(false);
+        _gameOverCanvas.SetActive(true);
+        _activeCanvas = GameOverCanvas;
+    }
+
     public void Exit()
     {
         GameManager.Instance.Exit();
@@ -143,6 +166,8 @@ public class UIManager : Singleton<UIManager>
         EventBroker.OnSceneLoadComplete -= CloseCameraAndCanvas;
         EventBroker.OnSceneLoadStart -= ShowCamera;
         EventBroker.OnSceneLoadComplete -= HideCamera;
+        EventBroker.WinHandler -= ShowWinCanvas;
+        EventBroker.GameOverHandler -= ShowGameOver;
     }
 
 }

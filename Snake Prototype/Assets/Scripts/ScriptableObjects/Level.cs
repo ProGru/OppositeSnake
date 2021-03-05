@@ -10,7 +10,7 @@ public class Level : ScriptableObject
 
     public void Load()
     {
-        GameManager.Instance.LoadScene(levelName);
+        GameManager.Instance.LoadScene(this);
         FruitManager.Instance.Settings = this;
     }
 }

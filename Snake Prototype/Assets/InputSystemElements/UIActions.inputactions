@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Exit",
+                    "name": "MainMenu",
                     "type": "Button",
                     "id": "463480d1-8dc5-415f-8aa1-1d110b4dcc73",
                     "expectedControlType": "Button",
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Exit",
+                    "action": "MainMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
