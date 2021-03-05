@@ -6,8 +6,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public float walkingSpeed;
+
     GridMap gridMap;
     ICommand command;
+    private bool _walkInterval = true;
 
     [Inject]
     public void GridMapConstruct(GridMap _gridMap)
@@ -17,35 +20,41 @@ public class PlayerController : MonoBehaviour
 
     public void UPMovement(InputAction.CallbackContext value)
     {
-        if (value.started)
-            PlayerStep(Vector3.forward);
+        PlayerStep(Vector3.forward);
     }
 
     public void DOWNMovement(InputAction.CallbackContext value)
     {
-        if (value.started)
-            PlayerStep(Vector3.back);
+        PlayerStep(Vector3.back);
     }
 
     public void LEFTMovement(InputAction.CallbackContext value)
     {
-        if (value.started)
-            PlayerStep(Vector3.left);
+        PlayerStep(Vector3.left);
     }
 
     public void RIGHTMovement(InputAction.CallbackContext value)
     {
-        if (value.started)
-            PlayerStep(Vector3.right);
+        PlayerStep(Vector3.right);
     }
 
     private void PlayerStep(Vector3 step)
     {
         if (gridMap.IsWalkable(transform.position + step))
         {
-            command = new MoveCommand(step, gameObject);
-            command.Execute();
-            EventBroker.CallPlayerMove(command);
+            if (_walkInterval)
+            {
+                _walkInterval = false;
+                command = new MoveCommand(step, gameObject);
+                command.Execute();
+                Invoke("ToggleInterval", walkingSpeed);
+                EventBroker.CallPlayerMove(command);
+            }
         }
+    }
+
+    private void ToggleInterval()
+    {
+        _walkInterval = true;
     }
 }

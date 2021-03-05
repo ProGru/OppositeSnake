@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Fruit : MonoBehaviour
 {
-    Vector3 worldPosition;
+    public Image image;
+    public Node gridPositionNode;
+
 }

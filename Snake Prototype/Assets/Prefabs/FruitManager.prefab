@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitsOnMap: []
+  fruitCount: 0
+  fruidUIElement: {fileID: 128746042670782116, guid: f1cb78a81e1563842a80f97306845cbd,
+    type: 3}

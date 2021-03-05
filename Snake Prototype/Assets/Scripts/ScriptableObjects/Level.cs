@@ -11,6 +11,12 @@ public class Level : ScriptableObject
     public void Load()
     {
         GameManager.Instance.LoadScene(this);
+        EventBroker.OnSceneLoadComplete += SetFruitManagerSettingsOnLevelLoad;
+    }
+
+    public void SetFruitManagerSettingsOnLevelLoad()
+    {
+        EventBroker.OnSceneLoadComplete -= SetFruitManagerSettingsOnLevelLoad;
         FruitManager.Instance.Settings = this;
     }
 }

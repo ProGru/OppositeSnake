@@ -7,9 +7,12 @@ public class SnakeController : MonoBehaviour
 {
     IPathFinder pathFinder;
     public GameObject player;
-    public int stepAtOnce = 2;
+    public int stepAtOnce = 1;
+    public float snakeSpeed;
     GridMap gridMap;
     ICommand command;
+
+    private List<ICommand> commandsToExecute;
 
     [Inject]
     public void GridMapConstruct(GridMap _gridMap)
@@ -19,67 +22,59 @@ public class SnakeController : MonoBehaviour
 
     private void Start()
     {
+        commandsToExecute = new List<ICommand>();
         pathFinder = new AStartPathFinder(gridMap);
         EventBroker.PlayerMoveHandler += MakeSnakeMove;
     }
 
     public void MakeSnakeMove(ICommand command)
     {
-        //check before move
-        if (transform.position == player.transform.position)
-        {
-            EventBroker.CallGameOver();
-        }
+        CheckForGameOver();
 
+        if (commandsToExecute.Count > 0)
+        {
+            Debug.LogWarning("Snake is to slow, can't add more commands" +
+                " because there still is some to do (Command will be no executed)", gameObject);
+            return;
+        }
         List<Node> path = pathFinder.FindPath(this.transform.position, player.transform.position);
+        int pathSteps = 0;
         if (path.Count > stepAtOnce-1)
         {
-
-            command = new SnakeMoveCommand(path[stepAtOnce - 1].wordlPosition, gameObject);
-            command.Execute();
-            EventBroker.CallSnakeMove(command);
+            pathSteps = stepAtOnce - 1;
         }
         else
         {
-            command = new SnakeMoveCommand(path[path.Count - 1].wordlPosition, gameObject);
-            command.Execute();
-            EventBroker.CallSnakeMove(command);
+            pathSteps = path.Count - 1;
         }
-        //check after move
+
+        for (int i = 0; i <= pathSteps; i++)
+        {
+            ICommand move = new SnakeMoveCommand(path[i].wordlPosition, gameObject);
+            commandsToExecute.Add(move);
+        }
+        StartCoroutine(SnakeMoveExecutor());
+
+    }
+
+    private void CheckForGameOver()
+    {
         if (transform.position == player.transform.position)
         {
             EventBroker.CallGameOver();
         }
     }
 
-    [ContextMenu("MakeSnakeMove")]
-    public void MakeSnakeMove()
+    IEnumerator SnakeMoveExecutor()
     {
-        ICommand command;
-        //check before move
-        if (transform.position == player.transform.position)
+        while (commandsToExecute.Count>0)
         {
-            EventBroker.CallGameOver();
-        }
-
-        List<Node> path = pathFinder.FindPath(this.transform.position, player.transform.position);
-        if (path.Count > stepAtOnce - 1)
-        {
-
-            command = new SnakeMoveCommand(path[stepAtOnce - 1].wordlPosition, gameObject);
+            yield return new WaitForSeconds(snakeSpeed);
+            command = commandsToExecute[0];
             command.Execute();
             EventBroker.CallSnakeMove(command);
-        }
-        else
-        {
-            command = new SnakeMoveCommand(path[path.Count - 1].wordlPosition, gameObject);
-            command.Execute();
-            EventBroker.CallSnakeMove(command);
-        }
-        //check after move
-        if (transform.position == player.transform.position)
-        {
-            EventBroker.CallGameOver();
+            commandsToExecute.Remove(command);
+            CheckForGameOver();
         }
     }
 
