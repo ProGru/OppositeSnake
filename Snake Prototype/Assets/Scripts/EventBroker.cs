@@ -15,7 +15,21 @@ public static class EventBroker
 
     public static event Action<ICommand> SnakeMoveHandler;
 
+    public static event Action<ICommand> CommandHandler;
+
+    public static event Action UndoStep;
+
     public static event Action WinHandler;
+
+    public static void CallUndoStep()
+    {
+        UndoStep?.Invoke();
+    }
+
+    public static void CallCommandHandler(ICommand command)
+    {
+        CommandHandler?.Invoke(command);
+    }
 
     public static void CallPlayerMove(ICommand command)
     {

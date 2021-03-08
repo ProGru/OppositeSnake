@@ -62,7 +62,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ReloadLevel()
     {
-        LoadScene(currentLevel);
+        currentLevel.Load();
     }
 
     public void Exit()

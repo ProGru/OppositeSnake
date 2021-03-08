@@ -22,6 +22,7 @@ public class OnFruitDrag : MonoBehaviour, IDragHandler, IEndDragHandler
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
+        fruit.SetDragMode(true);
         _currentNode = MouseInputsManager.Instance.GetNodeGridPostion();
         onDrag.Invoke();
         if (_currentNode == null) return;
@@ -34,13 +35,21 @@ public class OnFruitDrag : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        fruit.SetDragMode(false);
         onEndDrag.Invoke();
         if (_currentNode == null)
         {
             fruit.gameObject.SetActive(false);
             return;
         }
-        FruitManager.Instance.DragFruitToGrid(fruit,_currentNode);
-        Destroy(this.gameObject);
+        ICommand command = new FruitDragCommand(fruit, _currentNode, this);
+        command.Execute();
+        EventBroker.CallCommandHandler(command);
+        this.gameObject.SetActive(false);
+    }
+
+    public void Destroy()
+    {
+        this.gameObject.SetActive(false);
     }
 }
