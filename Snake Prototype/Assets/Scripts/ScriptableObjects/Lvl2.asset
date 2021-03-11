@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b23ab78f5efc84aac104892f0f50b7, type: 3}
   m_Name: Lvl2
   m_EditorClassIdentifier: 
-  levelName: EmptyScene
+  levelName: SampleScene
   fruits:
   - {fileID: 7501609429918897414, guid: 56d08fe8eeaec9e45bc571519580c0ad, type: 3}
   - {fileID: 7501609429918897414, guid: 56d08fe8eeaec9e45bc571519580c0ad, type: 3}
   - {fileID: 7501609429918897414, guid: 56d08fe8eeaec9e45bc571519580c0ad, type: 3}
   - {fileID: 7501609429918897414, guid: 56d08fe8eeaec9e45bc571519580c0ad, type: 3}
   - {fileID: 7501609429918897414, guid: 56d08fe8eeaec9e45bc571519580c0ad, type: 3}
+  nextLevel: {fileID: 11400000, guid: 73d7ee2fe5b1704488048d4b79092cc9, type: 2}
+  _bestResult: 0
+  fruitForBestResult: 4

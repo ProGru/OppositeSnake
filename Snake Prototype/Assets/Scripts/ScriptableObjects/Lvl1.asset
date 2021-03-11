@@ -16,3 +16,6 @@ MonoBehaviour:
   fruits:
   - {fileID: 7501609429918897414, guid: 56d08fe8eeaec9e45bc571519580c0ad, type: 3}
   - {fileID: 7501609429918897414, guid: 56d08fe8eeaec9e45bc571519580c0ad, type: 3}
+  nextLevel: {fileID: 11400000, guid: 87e9c82e46ee5044795c1e4128fd4176, type: 2}
+  _bestResult: 0
+  fruitForBestResult: 1

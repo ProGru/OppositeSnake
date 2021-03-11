@@ -32,6 +32,7 @@ public class FruitManager : Singleton<FruitManager>
         }
 
         fruitCount = fruitsToUse.Count;
+        UpdateStarScore();
     }
 
     public void DragFruitToGrid(Fruit fruit, Node node)
@@ -39,7 +40,7 @@ public class FruitManager : Singleton<FruitManager>
         fruit.gameObject.SetActive(true);
         node.haveFruit = true;
         fruit.gridPositionNode = node;
-        fruitsOnMap.Add(fruit);
+        AddFruit(fruit);
     }
 
     public OnFruitDrag RetakeFruitFromGrid(Fruit fruit)
@@ -49,8 +50,7 @@ public class FruitManager : Singleton<FruitManager>
         fruit.gridPositionNode = null;
         fruitDrag.fruit = fruit;
         fruit.gameObject.SetActive(false);
-        fruitsOnMap.Remove(fruit);
-
+        RetakeFruit(fruit);
         return fruitDrag;
     }
 
@@ -60,19 +60,44 @@ public class FruitManager : Singleton<FruitManager>
         fruit.gridPositionNode = null;
         fruitDrag.fruit = fruit;
         fruit.gameObject.SetActive(false);
-        fruitsOnMap.Remove(fruit);
-
+        RetakeFruit(fruit);
         return fruitDrag;
     }
 
     public void RemoveFruitFromGrid(Fruit fruit)
     {
         fruitsOnMap.Remove(fruit);
+        UpdateStarScore();
+    }
+
+    private void RetakeFruit(Fruit fruit)
+    {
+        fruitsOnMap.Remove(fruit);
+        fruitCount++;
+        UpdateStarScore();
+    }
+
+    private void AddFruit(Fruit fruit)
+    {
+        fruitsOnMap.Add(fruit);
+        fruitCount--;
+        UpdateStarScore();
     }
 
     public void AddFruitToGrid(Fruit fruit)
     {
         fruitsOnMap.Add(fruit);
+        UpdateStarScore();
+    }
+
+    private void UpdateStarScore()
+    {
+        _currentFruitPanel.UpdateStars(fruitCount);
+    }
+
+    public int GetScore()
+    {
+        return fruitCount;
     }
 
 }

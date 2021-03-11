@@ -26,5 +26,10 @@ public class FruitDragCommand : ICommand
         FruitManager.Instance.RetakeFruitFromGrid(_fruit, _fruitDrag);
     }
 
+    public bool CanExecute()
+    {
+        return true;
+    }
+
 
 }

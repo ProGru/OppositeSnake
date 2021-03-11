@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public List<GameObject> managerPrefabs;
+    public GameState gameState;
     List<GameObject> _instanceOfManagers;
     private ILevelLoader levelLoader;
 
@@ -17,6 +18,8 @@ public class GameManager : Singleton<GameManager>
     {
         levelLoader = new AsynLevelLoader();
         _instanceOfManagers = new List<GameObject>();
+        EventBroker.GameOverHandler += GameOverState;
+        EventBroker.WinHandler += GameWinState;
         LoadManagers();
     }
 
@@ -24,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     {
         currentLevel = level;
         levelLoader.LoadScene(level.levelName);
+        gameState = GameState.Play;
     }
 
     public void UnloadScene(string sceneName)
@@ -53,21 +57,52 @@ public class GameManager : Singleton<GameManager>
             Destroy(managerInstance);
         }
         _instanceOfManagers.Clear();
+        EventBroker.GameOverHandler -= GameOverState;
+        EventBroker.WinHandler -= GameWinState;
     }
 
     public void Reload()
     {
         SceneManager.LoadScene("BootScene");
+        gameState = GameState.Play;
     }
 
     public void ReloadLevel()
     {
         currentLevel.Load();
+        gameState = GameState.Play;
+    }
+
+    public void LoadNextLevel()
+    {
+        if (currentLevel.nextLevel == null) return;
+        currentLevel.nextLevel.Load();
+        gameState = GameState.Play;
     }
 
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void GameOverState()
+    {
+        gameState = GameState.GameOver;
+    }
+
+    public void GameWinState()
+    {
+        gameState = GameState.Win;
+    }
+
+    public Level GetNextLevel()
+    {
+        return currentLevel.nextLevel;
+    }
+
+    public Level GetCurrentLevel()
+    {
+        return currentLevel;
     }
 
 }

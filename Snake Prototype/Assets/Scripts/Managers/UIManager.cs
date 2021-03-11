@@ -28,6 +28,7 @@ public class UIManager : Singleton<UIManager>
     public void EscapeAction(InputAction.CallbackContext value)
     {
         if (!value.started) return;
+        if (GameManager.Instance.gameState != GameState.Play && GameManager.Instance.gameState != GameState.Pause) return;
         if (_activeCanvas != startScreen)
         {
             ShowMenu(!_menuCanvas.activeSelf);
@@ -40,6 +41,7 @@ public class UIManager : Singleton<UIManager>
         if (!startScreen.gameObject.activeSelf) return;
         EventBroker.OnSceneLoadComplete += CloseCameraAndCanvas;
         GameManager.Instance.defaultScene.Load();
+        GameManager.Instance.gameState = GameState.Play;
         ShowLoadingCanvas(true, "Ładuję..");
     }
 
@@ -62,7 +64,7 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowLoadingCanvas(bool show, string text = null)
     {
-        _activeCanvas.gameObject.SetActive(false);
+        DeactivateActivCanvas();
         _activeCanvas = loadingCanvas;
         loadingCanvas.gameObject.SetActive(show);
         if (text != null)
@@ -103,21 +105,28 @@ public class UIManager : Singleton<UIManager>
 
     public void RestartLevel()
     {
-        _activeCanvas?.gameObject.SetActive(false);
+        DeactivateActivCanvas();
         GameManager.Instance.ReloadLevel();
     }
 
     public void ShowMenu(bool show)
     {
-        _activeCanvas?.gameObject.SetActive(false);
+        DeactivateActivCanvas();
         _menuCanvas.SetActive(show);
         if (show)
+        {
             _activeCanvas = menuCanvas;
+            GameManager.Instance.gameState = GameState.Pause;
+        }
+        else
+        {
+            GameManager.Instance.gameState = GameState.Play;
+        }
     }
 
     public void ShowOptions(bool show)
     {
-        _activeCanvas?.gameObject.SetActive(false);
+        DeactivateActivCanvas();
         _optionCanvas.SetActive(show);
         if(show)
             _activeCanvas = optionCanvas;
@@ -125,22 +134,30 @@ public class UIManager : Singleton<UIManager>
 
     public void ShowLevelLoad(bool show)
     {
-        _activeCanvas?.gameObject.SetActive(false);
+        DeactivateActivCanvas();
         _levelSelectCanvas.SetActive(show);
         if (show)
             _activeCanvas = levelSelectCanvas;
     }
 
+    public void ShowWinCanvas(bool show)
+    {
+        DeactivateActivCanvas();
+        _winCanvas.SetActive(show);
+        if (show)
+            _activeCanvas = WinCanvas;
+    }
+
     public void ShowWinCanvas()
     {
-        _activeCanvas?.gameObject.SetActive(false);
+        DeactivateActivCanvas();
         _winCanvas.SetActive(true);
         _activeCanvas = WinCanvas;
     }
 
     public void ShowGameOver()
     {
-        _activeCanvas?.gameObject.SetActive(false);
+        DeactivateActivCanvas();
         _gameOverCanvas.SetActive(true);
         _activeCanvas = GameOverCanvas;
     }
@@ -168,6 +185,12 @@ public class UIManager : Singleton<UIManager>
         EventBroker.OnSceneLoadComplete -= HideCamera;
         EventBroker.WinHandler -= ShowWinCanvas;
         EventBroker.GameOverHandler -= ShowGameOver;
+    }
+
+    private void DeactivateActivCanvas()
+    {
+        _activeCanvas?.gameObject.SetActive(false);
+        SoundManager.Instance.PlayButton();
     }
 
 }

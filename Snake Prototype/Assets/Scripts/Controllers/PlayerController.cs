@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerStep(Vector3 step)
     {
+        if (GameManager.Instance.gameState != GameState.Play) return;
+
         if (gridMap.IsWalkable(transform.position + step))
         {
             if (_walkInterval)

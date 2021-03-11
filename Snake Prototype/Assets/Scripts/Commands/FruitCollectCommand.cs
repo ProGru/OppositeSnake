@@ -13,6 +13,11 @@ public class FruitCollectCommand : ICommand
         _node = fruit.gridPositionNode;
     }
 
+    public bool CanExecute()
+    {
+        return true;
+    }
+
     public void Execute()
     {
         _fruitDrag =  FruitManager.Instance.RetakeFruitFromGrid(_fruit);

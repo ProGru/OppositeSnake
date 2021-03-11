@@ -11,6 +11,7 @@ public class SnakeController : MonoBehaviour
     public float snakeSpeed;
     GridMap gridMap;
     ICommand command;
+    public Node standingNode;
 
     private List<ICommand> commandsToExecute;
 
@@ -26,6 +27,7 @@ public class SnakeController : MonoBehaviour
         pathFinder = new AStartPathFinder(gridMap);
         EventBroker.PlayerMoveHandler += MakeSnakeMove;
         EventBroker.UndoStep += ClearCommands;
+        standingNode = gridMap.GetNode(this.transform.position);
     }
 
     public void MakeSnakeMove(ICommand command)
@@ -53,7 +55,7 @@ public class SnakeController : MonoBehaviour
 
         for (int i = 0; i <= pathSteps; i++)
         {
-            ICommand move = new SnakeMoveCommand(path[i].wordlPosition, gameObject);
+            ICommand move = new SnakeMoveCommand(path[i], this);
             multipleSnakeMove.Add(move);
             commandsToExecute.Add(move);
         }
@@ -85,6 +87,13 @@ public class SnakeController : MonoBehaviour
         if (transform.position == player.transform.position)
         {
             EventBroker.CallGameOver();
+            return;
+        }
+        List<Node> path = pathFinder.FindPath(this.transform.position, player.transform.position);
+        if (path.Count < 2)
+        {
+            EventBroker.CallGameOver();
+            return;
         }
     }
 
@@ -95,6 +104,11 @@ public class SnakeController : MonoBehaviour
             yield return new WaitForSeconds(snakeSpeed);
             if (commandsToExecute.Count == 0) break;
             command = commandsToExecute[0];
+            if (!command.CanExecute())
+            {
+                commandsToExecute.Clear();
+                break;
+            }
             command.Execute();
             commandsToExecute.Remove(command);
             CheckForGameOver();

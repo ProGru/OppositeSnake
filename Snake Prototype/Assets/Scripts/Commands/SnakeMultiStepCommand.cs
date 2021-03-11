@@ -27,4 +27,9 @@ public class SnakeMultiStepCommand : ICommand
         }
         EventBroker.CallUndoStep();
     }
+
+    public bool CanExecute()
+    {
+        return true;
+    }
 }

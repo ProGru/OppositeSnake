@@ -4,24 +4,35 @@ using UnityEngine;
 
 public class SnakeMoveCommand : ICommand
 {
-    Vector3 _targetPoint;
-    GameObject _snake;
-    Vector3 _startPoint;
+    Node _targetNode;
+    SnakeController _snake;
+    Node _startNode;
 
-    public SnakeMoveCommand(Vector3 targetPoit,GameObject snake)
+    public SnakeMoveCommand(Node targetNode,SnakeController snake)
     {
         _snake = snake;
-        _targetPoint = targetPoit;
-        _startPoint = snake.transform.position;
+        _targetNode = targetNode;
+        _startNode = snake.standingNode;
+    }
+
+    public bool CanExecute()
+    {
+        return _targetNode.walkable;
     }
 
     public void Execute()
     {
-        _snake.transform.position = _targetPoint;
+        _snake.standingNode.walkable = true;
+        _targetNode.walkable = false;
+        _snake.standingNode = _targetNode;
+        _snake.transform.position = _targetNode.wordlPosition;
     }
 
     public void Undo()
     {
-        _snake.transform.position = _startPoint;
+        _snake.standingNode.walkable = true;
+        _startNode.walkable = false;
+        _snake.standingNode = _startNode;
+        _snake.transform.position = _startNode.wordlPosition;
     }
 }

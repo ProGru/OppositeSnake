@@ -22,4 +22,9 @@ public class FruitEatCommand : ICommand
         FruitManager.Instance.AddFruitToGrid(_fruit);
         EventBroker.CallUndoStep();
     }
+
+    public bool CanExecute()
+    {
+        return true;
+    }
 }

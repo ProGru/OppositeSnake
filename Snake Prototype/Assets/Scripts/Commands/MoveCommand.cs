@@ -22,4 +22,9 @@ public class MoveCommand : ICommand
     {
         _player.transform.Translate(_step*-1);
     }
+
+    public bool CanExecute()
+    {
+        return true;
+    }
 }

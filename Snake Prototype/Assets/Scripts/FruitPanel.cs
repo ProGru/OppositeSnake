@@ -1,18 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class FruitPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public TextMeshProUGUI starsDisplay;
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateStars(int stars)
     {
-        
+        starsDisplay.text = stars.ToString();
     }
 }
