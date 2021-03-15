@@ -17,7 +17,7 @@ public class UILoadLevelObject : MonoBehaviour
         set
         {
             _levelSettings = value;
-            levelNameText.text = value.levelName;
+            levelNameText.SetText( value.levelName);
         }
     }
 

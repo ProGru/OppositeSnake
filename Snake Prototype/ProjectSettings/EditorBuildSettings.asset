@@ -11,4 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EmptyScene.unity
     guid: 1fb82052e62862643b8b74672bbb3b31
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 10bfc0e4cafcac14fb99847e934232fd,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: e3cd71d8878cfed478c1dbaff666e855,
+      type: 2}

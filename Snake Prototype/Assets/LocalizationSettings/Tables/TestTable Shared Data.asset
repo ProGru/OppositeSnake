@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: TestTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: TestTable
+  m_TableCollectionNameGuidString: 4029fa680ce0dd1419095dcfb2defa13
+  m_Entries:
+  - m_Id: 163404951552
+    m_Key: Press P
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171923333033984
+    m_Key: Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172152040042496
+    m_Key: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172286299713536
+    m_Key: Reload
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172443116351488
+    m_Key: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172657394954240
+    m_Key: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172741943734272
+    m_Key: Load Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 172920470089728
+    m_Key: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173015508824064
+    m_Key: Mute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173189056540672
+    m_Key: Wining
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173344828796928
+    m_Key: Next Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173444112166912
+    m_Key: GameOver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 173621342482432
+    m_Key: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 178199098142720
+    m_Key: Undo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1324421469024256
+    m_Key: Level
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1615516824949
